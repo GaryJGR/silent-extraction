@@ -109,6 +109,16 @@ namespace SilentExtraction
                 else m.Restart();
             }
             if (m.Phase == MissionPhase.Paused && GUI.Button(new Rect(x + 435, y + 288, 145, 49), "RESTART", button)) m.Restart();
+            if (GUI.Button(new Rect(x, y + 349, 580, 42), "QUIT", button)) QuitGame();
+        }
+        void QuitGame()
+        {
+            Time.timeScale = 1;
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }
